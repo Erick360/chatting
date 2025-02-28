@@ -10,11 +10,61 @@ class WelcomeScreen extends StatefulWidget {
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderStateMixin {
+
+  late AnimationController controller;
+  late Animation animation;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+        duration: const Duration(seconds: 1),
+        vsync: this,
+        upperBound: 100.0,
+    );
+
+    animation = ColorTween(begin: Colors.red,end: Colors.blue).animate(controller);
+    /*
+    animation = CurvedAnimation(
+        parent: controller,
+        curve: Curves.decelerate
+    );
+*/
+
+    /*
+    // reversed to forward animation
+    animation.addStatusListener(
+        (status){
+          if(status == AnimationStatus.completed){
+            controller.reverse(from: 1.0);
+          }else if(status == AnimationStatus.dismissed){
+            controller.forward();
+          }
+        }
+    );
+  */
+
+    controller.forward();
+    controller.addListener((){
+      setState(() {
+
+      });
+    });
+  }
+
+  /*
+  @override
+  void dispose(){
+    controller.dispose();
+    super.dispose();
+  }
+*/
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.white,//animation.value //withOpacity(controller.value),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -25,8 +75,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               children: <Widget>[
                 Hero(
                  tag: 'logo',
-                  child: Container(
-                    height: 80.0,
+                  child: SizedBox(
+                    height: controller.value,
                     child: Image.asset('images/logo.png'),
                   ),
                 ),
