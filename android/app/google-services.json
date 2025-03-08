@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "945558201121",
+    "project_id": "l-amour-341ab",
+    "storage_bucket": "l-amour-341ab.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:945558201121:android:0db59ed6e7407f69c09460",
+        "android_client_info": {
+          "package_name": "com.example.flash_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsDmgRyOj9Vx-B02EAGfXjAZmbjj1ETbw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
